@@ -1,4 +1,4 @@
-import algoliasearch from 'algoliasearch';
+// import algoliasearch from 'algoliasearch';
 import Autocomplete from './components/autocomplete';
 
 class SpencerAndWilliamsSearch {
