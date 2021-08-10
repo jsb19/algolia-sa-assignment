@@ -1,3 +1,4 @@
+import algoliasearch from 'algoliasearch/src/server/builds/node';
 import Autocomplete from './components/autocomplete';
 
 class SpencerAndWilliamsSearch {
