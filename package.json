@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "parcel index.html",
-    "dev": "parcel <your entry file>",
+    "start": "parcel index.html --port 3000",
     "build": "parcel build index.html",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
@@ -16,20 +16,11 @@
     "eslint-config-prettier": "3.6.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-prettier": "3.1.0",
-    "gh-pages": "^3.2.3",
     "parcel-bundler": "^1.12.4",
     "prettier": "1.16.4"
   },
   "dependencies": {
-    "@algolia/autocomplete-plugin-query-suggestions": "^1.2.2",
-    "@algolia/autocomplete-plugin-recent-searches": "^1.2.2",
-    "@algolia/autocomplete-theme-classic": "^1.2.2",
     "algoliasearch": "^3.35.1",
-    "data": "^0.6.1",
-    "instantsearch.js": "^4.0.0",
-    "stream-json": "^1.7.2"
-  },
-  "engines": {
-    "node": "10.x"
+    "instantsearch.js": "^4.0.0"
   }
 }
