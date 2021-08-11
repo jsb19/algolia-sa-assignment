@@ -8,8 +8,6 @@
     "build": "parcel build index.html --public-url ./ --out-dir docs",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "predeploy": "npm run build",
-    "deploy": "algolia-sa-assignment -d build"
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
@@ -32,6 +30,7 @@
     "stream-json": "^1.7.2"
   },
   "engines": {
-    "node": "10.x"
+    "node": "10.x",
+    "npm": "6.10.1"
   }
 }
