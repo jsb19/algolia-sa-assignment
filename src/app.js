@@ -1,4 +1,4 @@
-import Autocomplete from './components/autocomplete';
+import Autocomplete from './autocomplete';
 
 class SpencerAndWilliamsSearch {
   constructor() {
