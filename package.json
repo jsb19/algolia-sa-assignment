@@ -21,7 +21,11 @@
     "prettier": "1.16.4"
   },
   "dependencies": {
-    "algoliasearch": "^3.35.1",
-    "instantsearch.js": "^4.0.0"
+    "@algolia/autocomplete-js": "^1.2.2",
+    "@algolia/autocomplete-plugin-query-suggestions": "^1.2.2",
+    "@algolia/client-search": "^4.10.3",
+    "algoliasearch": "^4.10.3",
+    "instantsearch.js": "^4.0.0",
+    "yarn": "^1.22.11"
   }
 }
