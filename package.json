@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "parcel index.html --port 3000",
+    "dev": "parcel <your entry file>",
     "build": "parcel build index.html --public-url ./ --out-dir docs",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",

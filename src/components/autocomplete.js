@@ -6,13 +6,13 @@ import { index, hits, searchBox, configure} from 'instantsearch.js/es/widgets';
 
 // Autocomplete Template
 import autocompleteProductTemplate from '../templates/autocomplete-product';
-
 // Result Hits Template
 import resultHitsTemplate from '../templates/result-hit';
 
 // Importing packages for query suggestions
 import { autocomplete } from '@algolia/autocomplete-js';
 import { createQuerySuggestionsPlugin } from '@algolia/autocomplete-plugin-query-suggestions';
+
 
 // Instantiate the Algolia search API credentials
 const appId = '3V2PNQSAAP';
@@ -42,26 +42,33 @@ class Autocomplete {
       apiKey                                      // adding API key
     );
     
+    // Creating product search instance
     this._searchInstance = instantsearch({
-      indexName: 'spencer_williams',              // swapping out indexName with my own
+      indexName: 'spencer_williams',              
       searchClient: this._searchClient,
     });
 
 
-    this._querySuggestionsPlugin = createQuerySuggestionsPlugin({
+    // Creating query search instance
+    this._queryInstance = instantsearch({
+      indexName: 'spencer_williams_query_suggestions',              
+      searchClient: this._searchClient,
+    });
+
+
+    const querySuggestionsPlugin = createQuerySuggestionsPlugin({
       searchClient: this._searchClient,
       indexName: 'spencer_williams_query_suggestions',
+      getSearchParams({ state }) {
+        return { hitsPerPage: state.query ? 5 : 10 };
+      },
     });
     
-    // autocomplete({
-    //   container: '#suggestions',
-    //   template: {item: autocompleteProductTemplate},
-    //   plugins: [this._querySuggestionsPlugin],
-    //   openOnFocus: true,
-    //   onSelectChange({ query }) {
-    //     search.helper.setQuery(query).search();
-    //   },
-    // });
+    autocomplete({
+      container: '#suggestions',
+      plugins: [querySuggestionsPlugin],
+      openOnFocus: true,
+    });
 
 
   }
@@ -71,7 +78,7 @@ class Autocomplete {
    * Adds widgets to the Algolia instant search instance
    * @return {void}
    */
-  _registerWidgets() {
+  _registerWidgets() {    
     this._searchInstance.addWidgets([
       configure({
         hitsPerPage: 3,
@@ -84,16 +91,7 @@ class Autocomplete {
         container: '#autocomplete-hits',
         templates: { item: autocompleteProductTemplate },
       }),
-    ]),
-    autocomplete({
-      container: '#suggestions',
-      template: {item: autocompleteProductTemplate},
-      plugins: [this._querySuggestionsPlugin],
-      openOnFocus: true,
-      onSelectChange({ query }) {
-        search.helper.setQuery(query).search();
-      },
-    });
+    ]);
   }
 
   /**
@@ -103,6 +101,7 @@ class Autocomplete {
    */
   _startSearch() {
     this._searchInstance.start();
+    this._queryInstance.start();
   }
 
 
