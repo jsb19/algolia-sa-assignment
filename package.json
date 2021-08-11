@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "parcel index.html --port 3000",
+    "start": "parcel index.html",
     "dev": "parcel <your entry file>",
-    "build": "parcel build index.html --public-url ./ --out-dir docs",
+    "build": "parcel build index.html",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix",
-    "predeploy": "npm run build",
-    "deploy": "algolia-sa-assignment -d build"
+    "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
